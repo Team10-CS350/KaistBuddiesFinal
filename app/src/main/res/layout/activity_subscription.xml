@@ -13,8 +13,8 @@
             android:layout_marginLeft="10sp"
             android:layout_centerHorizontal="true"
             android:id="@+id/rTitleField"
-            android:text = "Register To BuddyApp"
-            android:textColor = '@color/colorPrimaryDark'
+            android:text = "Register to KAIST BUDDIES"
+            android:textColor = '@color/colorMellowPrimary'
             android:textSize = "23sp">
 
     </TextView>
@@ -38,7 +38,8 @@
             android:layout_below="@+id/rTitleField"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="-3dp"
-            android:layout_toRightOf="@id/rNameField">
+            android:layout_toRightOf="@id/rNameField"
+            android:hint="@string/name">
 
 
     </EditText>
@@ -62,7 +63,7 @@
             android:layout_toRightOf="@id/rEmailField"
             android:layout_marginLeft="10sp"
             android:layout_below="@+id/rNameInput"
-            android:hint="email">
+            android:hint="@string/email">
 
 
     </EditText>
@@ -74,7 +75,7 @@
             android:layout_below="@+id/rEmailField"
             android:layout_marginLeft="10sp"
             android:layout_marginTop="20sp"
-            android:text="Password"
+            android:text="@string/password"
             android:textColor='@color/colorPrimaryDark'
             android:textSize="20sp">
 
@@ -89,7 +90,7 @@
             android:layout_marginLeft="14dp"
             android:layout_marginTop="7dp"
             android:layout_toRightOf="@id/rPasswordField"
-            android:hint="password">
+            android:hint="@string/password">
 
 
     </EditText>
@@ -116,7 +117,7 @@
             android:layout_marginTop="7sp"
             android:inputType="textPassword"
             android:layout_toRightOf="@id/rRepeatPasswordField"
-            android:hint="password">
+            android:hint="@string/password">
 
 
     </EditText>
@@ -131,7 +132,7 @@
             android:textSize="17dp"
             android:textColor='@color/colorPrimaryDark'
 
-            android:text="Check if you are a Korean buddy" />
+            android:text="I am a Korean buddy" />
 
     <Button
             android:id="@+id/submitRegistration"

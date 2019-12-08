@@ -1,6 +1,8 @@
 package com.example.buddyapp4;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -25,7 +27,14 @@ public class ProfileFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private ProfileFragmentListener listener;
 
+    private TextView logout;
+
+
+    public interface ProfileFragmentListener {
+        void logOutHandler();
+    }
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -68,7 +77,18 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        logout = v.findViewById(R.id.logoutText);
+        logout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                listener.logOutHandler();
+            }
+        });
+
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -79,9 +99,20 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ProfileFragmentListener) {
+            listener = (ProfileFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + "must implement profile fragment listener");
+        }
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
 
     /**

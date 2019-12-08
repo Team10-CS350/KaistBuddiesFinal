@@ -1,6 +1,7 @@
 package com.example.buddyapp4;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,9 +18,11 @@ import android.widget.Toast;
 
 import com.example.buddyapp4.ui.main.SectionsPagerAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ProfileFragment.ProfileFragmentListener {
 
     long backPressedTime;
+
+
     @Override
     public void onBackPressed() {
         if (System.currentTimeMillis() - backPressedTime < 2000) {
@@ -52,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    public void logOutHandler() {
+        SharedPreferences preferences = getSharedPreferences("status", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("userStatus", "loggedOut");
+        editor.apply();
+        Intent intent = new Intent (MainActivity.this, ActivityLogIn.class);
+        startActivity(intent);
     }
 
     public void toastThis(String message) {
