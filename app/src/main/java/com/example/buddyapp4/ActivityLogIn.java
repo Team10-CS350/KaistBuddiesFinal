@@ -33,7 +33,7 @@ public class ActivityLogIn extends AppCompatActivity {
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent i = new Intent(ActivityLogIn.this, ActivitySubscription.class);
+                Intent i = new Intent(ActivityLogIn.this, ActivityRegistration.class);
                 startActivity(i);
             }
         });
@@ -43,7 +43,9 @@ public class ActivityLogIn extends AppCompatActivity {
             public void onClick(View view) {
                 email = (EditText) findViewById(R.id.enterEmail);
                 password = (EditText) findViewById(R.id.enterPassword);
+
                 if (DemoServer.checkIfEmailExists(email.getText().toString())) {
+
                     User currentUser = DemoServer.getUserFromEmail(email.getText().toString());
                     if (currentUser.passwordMatches(password.getText().toString())) {
 

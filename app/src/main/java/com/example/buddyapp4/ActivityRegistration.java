@@ -1,7 +1,6 @@
 package com.example.buddyapp4;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ActivitySubscription extends AppCompatActivity {
+public class ActivityRegistration extends AppCompatActivity {
     private EditText name, email, password, repeatPassword;
     private CheckBox buddyCheckBox;
     private Button submit;
@@ -36,20 +35,22 @@ public class ActivitySubscription extends AppCompatActivity {
                 String name1 = name.getText().toString();
                 String email1 = email.getText().toString();
                 String userType = buddyCheckBox.isChecked()? "buddy" : "normal user";
-                if (password1.length() * name1.length() * email1.length() == 0) toastThis ("please fill every field");
+                if (password1.length() * name1.length()
+                        * email1.length() == 0) {
+                    toastThis ("please fill every field");
+                }
                 else if (password1.equals(password2)) {
                     toastThis("the passwords are equal");
-                    User newUser = new User(name.getText().toString(), email.getText().toString(), password1, buddyCheckBox.isChecked());
+                    User newUser = new User(name.getText().toString(), email.getText().toString(),
+                            password1, buddyCheckBox.isChecked());
+
+                    DemoServer.sendAuthentication(newUser);
                     DemoServer.addNewUser(newUser);
-                    toastThis ("you have been subscribed as a " + userType);
 
-                    SharedPreferences preferences = getSharedPreferences("status", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("userStatus", "loggedOut");
-                    editor.apply();
+                    Intent startAuthentication = new Intent (ActivityRegistration.this, ActivityAuthenticate.class);
+                    startAuthentication.putExtra("USERMAIL", newUser.getEmail());
+                    startActivity(startAuthentication);
 
-                    Intent i = new Intent(ActivitySubscription.this, ActivityLogIn.class);
-                    startActivity(i);
                 } else toastThis("your passwords don't match");
             }
         });

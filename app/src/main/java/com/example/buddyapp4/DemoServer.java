@@ -66,7 +66,13 @@ public class DemoServer {
     }
 
     public static User createDummyUser(String name, Boolean isBuddy) {
-        return new User(name, name + "@kaist.ac.kr", name, isBuddy);
+        return new User(name, name, name, isBuddy);
     }
 
+
+    public static void sendAuthentication(User user) {}
+    public static Boolean checkIfCodeCorrect(String userName, String code) {
+        if (code.equals("1234")) return true;
+        else return false;
+    }
 }

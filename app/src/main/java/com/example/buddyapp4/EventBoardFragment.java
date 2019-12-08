@@ -29,6 +29,12 @@ public class EventBoardFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    /* test code */
+    String titles[] = {"sometitle", "sometitle2"};
+    String descriptions[] = {"somedescription1", "somedescription2"};
+    int images[] = {R.drawable.avatar, R.drawable.avatar};
+
+
     private OnFragmentInteractionListener mListener;
 
     public EventBoardFragment() {
@@ -98,4 +104,9 @@ public class EventBoardFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+
+
+
 }
