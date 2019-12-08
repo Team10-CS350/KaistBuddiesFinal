@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ActivitySubscription">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="10sp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/rTitleField"
+            android:text = "Register To BuddyApp"
+            android:textColor = '@color/colorPrimaryDark'
+            android:textSize = "23sp">
+
+    </TextView>
+
+    <TextView
+            android:id="@+id/rNameField"
+            android:layout_width="100sp"
+            android:layout_height="25sp"
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/rTitleField"
+            android:text="Full Name"
+            android:textColor='@color/colorPrimaryDark'
+            android:textSize="20sp">
+
+    </TextView>
+
+    <EditText
+            android:id="@+id/rNameInput"
+            android:layout_width="250sp"
+            android:layout_height="40sp"
+            android:layout_below="@+id/rTitleField"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="-3dp"
+            android:layout_toRightOf="@id/rNameField">
+
+
+    </EditText>
+
+    <TextView
+            android:id="@+id/rEmailField"
+            android:layout_width="wrap_content"
+            android:layout_height="25sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20sp"
+            android:layout_below="@+id/rNameField"
+            android:text="Kaist Email"
+            android:textColor='@color/colorPrimaryDark'
+            android:textSize="20sp">
+    </TextView>
+
+    <EditText
+            android:id="@+id/rEmailInput"
+            android:layout_width="250sp"
+            android:layout_height="40sp"
+            android:layout_toRightOf="@id/rEmailField"
+            android:layout_marginLeft="10sp"
+            android:layout_below="@+id/rNameInput"
+            android:hint="email">
+
+
+    </EditText>
+
+    <TextView
+            android:id="@+id/rPasswordField"
+            android:layout_width="wrap_content"
+            android:layout_height="25sp"
+            android:layout_below="@+id/rEmailField"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20sp"
+            android:text="Password"
+            android:textColor='@color/colorPrimaryDark'
+            android:textSize="20sp">
+
+    </TextView>
+
+    <EditText
+            android:id="@+id/rPasswordInput"
+            android:layout_width="250sp"
+            android:layout_height="40sp"
+            android:inputType="textPassword"
+            android:layout_below="@+id/rEmailInput"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@id/rPasswordField"
+            android:hint="password">
+
+
+    </EditText>
+
+    <TextView
+            android:id="@+id/rRepeatPasswordField"
+            android:layout_width="wrap_content"
+            android:layout_height="25sp"
+            android:layout_below="@+id/rPasswordField"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20sp"
+            android:text="Repeat Password"
+            android:textColor='@color/colorPrimaryDark'
+            android:textSize="20sp">
+
+    </TextView>
+
+    <EditText
+            android:id="@+id/rRepeatPasswordInput"
+            android:layout_width="250sp"
+            android:layout_height="40sp"
+            android:layout_below="@+id/rPasswordInput"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="7sp"
+            android:inputType="textPassword"
+            android:layout_toRightOf="@id/rRepeatPasswordField"
+            android:hint="password">
+
+
+    </EditText>
+
+    <CheckBox
+            android:id="@+id/buddyCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/rRepeatPasswordField"
+            android:textSize="17dp"
+            android:textColor='@color/colorPrimaryDark'
+
+            android:text="Check if you are a Korean buddy" />
+
+    <Button
+            android:id="@+id/submitRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buddyCheckBox"
+            android:layout_marginTop="15sp"
+            android:text="Submit Registration"
+            android:textSize="15sp">
+
+    </Button>
+
+
+
+</RelativeLayout>
