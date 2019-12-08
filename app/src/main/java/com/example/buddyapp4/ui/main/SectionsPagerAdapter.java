@@ -1,6 +1,7 @@
 package com.example.buddyapp4.ui.main;
 
 import android.content.Context;
+import android.util.EventLog;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.buddyapp4.EventBoardFragment;
 import com.example.buddyapp4.R;
 
 /**
@@ -33,6 +35,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
+                fragment = EventBoardFragment.newInstance("","");
+                break;
             case 1:
             case 2:
                 fragment = PlaceholderFragment.newInstance(position + 1);
