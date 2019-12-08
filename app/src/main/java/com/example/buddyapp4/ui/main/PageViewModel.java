@@ -12,7 +12,17 @@ public class PageViewModel extends ViewModel {
     private LiveData<String> mText = Transformations.map(mIndex, new Function<Integer, String>() {
         @Override
         public String apply(Integer input) {
-            return "Hello world from section: " + input;
+            if (input == 1) {
+                return "All events will be displayed here";
+            }
+            else if (input == 2) {
+                return "All top ten rated buddies will be displayed here";
+            }
+            else if (input == 3) {
+                return "All profile details will be displayed here";
+            }
+            else return "Page not found";
+
         }
     });
 
