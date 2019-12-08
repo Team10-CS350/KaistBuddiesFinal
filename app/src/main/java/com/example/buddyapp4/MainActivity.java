@@ -13,10 +13,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.buddyapp4.ui.main.SectionsPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
+
+    long backPressedTime;
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - backPressedTime < 2000) {
+            moveTaskToBack(true);
+            android.os.Process.killProcess (android.os.Process.myPid());
+            System.exit(0);
+            return;
+        } else {
+            toastThis("press back again to exit");
+            backPressedTime = System.currentTimeMillis();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,5 +52,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void toastThis(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

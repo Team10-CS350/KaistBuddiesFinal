@@ -1,6 +1,7 @@
 package com.example.buddyapp4;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,12 @@ public class ActivitySubscription extends AppCompatActivity {
                     User newUser = new User(name.getText().toString(), email.getText().toString(), password1, buddyCheckBox.isChecked());
                     DemoServer.addNewUser(newUser);
                     toastThis ("you have been subscribed as a " + userType);
+
+                    SharedPreferences preferences = getSharedPreferences("status", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("userStatus", "loggedOut");
+                    editor.apply();
+
                     Intent i = new Intent(ActivitySubscription.this, ActivityLogIn.class);
                     startActivity(i);
                 } else toastThis("your passwords don't match");
