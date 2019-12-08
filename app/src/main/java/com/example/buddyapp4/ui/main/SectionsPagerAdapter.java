@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.buddyapp4.EventBoardFragment;
+import com.example.buddyapp4.ProfileFragment;
 import com.example.buddyapp4.R;
 
 /**
@@ -38,8 +39,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = EventBoardFragment.newInstance("","");
                 break;
             case 1:
-            case 2:
                 fragment = PlaceholderFragment.newInstance(position + 1);
+                break;
+            case 2:
+                fragment = ProfileFragment.newInstance("", "");
+                break;
         }
         return fragment;
     }
