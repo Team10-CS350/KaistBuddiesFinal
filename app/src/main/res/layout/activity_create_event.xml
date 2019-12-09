@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorBackGround"
+        tools:context=".ActivityCreateEvent">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minHeight="?actionBarSize"
+                android:padding="@dimen/appbar_padding"
+                android:text="@string/createEvent"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Event Title:"
+            android:textSize="@dimen/subtitle_text"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            />
+    <EditText
+            android:id="@+id/eventTitleEntered"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Event Description:"
+            android:textSize="@dimen/subtitle_text"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            />
+    <EditText
+            android:id="@+id/eventDescEntered"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type of Event:"
+                android:textSize="@dimen/subtitle_text"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="(You can choose more than one)"
+                android:gravity="center"
+                android:textColor="@color/colorMellowPrimary"
+                />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
+<!--        DINNER, PARTY, SHOPPING, GAMING, SPORTS, STUDY, HANGOUT, MEETING;-->
+        <CheckBox
+                android:id="@+id/checkDinner"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Dinner"
+                android:textColor='@color/colorPrimaryDark' />
+
+        <CheckBox
+                android:id="@+id/checkParty"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Party"
+                android:textColor='@color/colorPrimaryDark' />
+
+        <CheckBox
+                android:id="@+id/checkShopping"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Shopping"
+                android:textColor='@color/colorPrimaryDark' />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
+<!--        DINNER, PARTY, SHOPPING, GAMING, SPORTS, STUDY, HANGOUT, MEETING;-->
+        <CheckBox
+                android:id="@+id/checkGaming"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Gaming"
+                android:textColor='@color/colorPrimaryDark' />
+
+        <CheckBox
+                android:id="@+id/checkSports"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Sports"
+                android:textColor='@color/colorPrimaryDark' />
+
+        <CheckBox
+                android:id="@+id/checkStudy"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Study"
+                android:textColor='@color/colorPrimaryDark' />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
+<!--        DINNER, PARTY, SHOPPING, GAMING, SPORTS, STUDY, HANGOUT, MEETING;-->
+        <CheckBox
+                android:id="@+id/checkHangOut"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Hang out"
+                android:textColor='@color/colorPrimaryDark' />
+
+        <CheckBox
+                android:id="@+id/checkMeeting"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Meeting"
+                android:textColor='@color/colorPrimaryDark' />
+
+        <CheckBox
+                android:id="@+id/checkbox1"
+                android:layout_width="@dimen/eventTypeSpacing"
+                android:layout_height="wrap_content"
+                android:text="Checkbox"
+                android:textColor='@color/colorPrimaryDark' />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event Date:"
+                android:textSize="@dimen/subtitle_text"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_margin="10dp"
+                android:layout_gravity="center" />
+        <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date" />
+
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/postEventButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Post Event"/>
+
+
+
+</LinearLayout>

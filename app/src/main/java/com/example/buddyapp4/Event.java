@@ -5,7 +5,7 @@ import java.util.List;
 
 enum EventType
 {
-    DINNER, PARTY, SHOPPING;
+    DINNER, PARTY, SHOPPING, GAMING, SPORTS, STUDY, HANGOUT, MEETING;
 }
 
 enum EventStatus

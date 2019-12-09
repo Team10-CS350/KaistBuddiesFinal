@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent creatingEvent = new Intent (MainActivity.this, ActivityCreateEvent.class);
+                startActivity(creatingEvent);
+
                 toastThis("Adding a new event");
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
