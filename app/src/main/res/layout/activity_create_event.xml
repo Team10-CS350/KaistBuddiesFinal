@@ -170,7 +170,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Event Date:"
+                android:text="Event Date: (MM/DD/YY)"
                 android:textSize="@dimen/subtitle_text"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_margin="10dp"
@@ -180,9 +180,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="MM/DD/YY"
                 android:inputType="date" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Event Time: (HH:MM)"
+            android:textSize="@dimen/subtitle_text"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_margin="10dp"
+            android:layout_gravity="center" />
+        <EditText
+            android:id="@+id/eventTimeEntered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="HH:MM"
+            android:inputType="date" />
+
+    </LinearLayout>
+
+
+
 
     <Button
             android:id="@+id/postEventButton"

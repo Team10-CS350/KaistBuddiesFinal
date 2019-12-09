@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="The new Fragment to be edited"
-        android:textSize="10sp"/>
+        android:textSize="20sp"/>
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/eventListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp" />

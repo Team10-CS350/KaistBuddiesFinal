@@ -9,6 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -33,6 +37,10 @@ public class EventBoardFragment extends Fragment {
     String titles[] = {"sometitle", "sometitle2"};
     String descriptions[] = {"somedescription1", "somedescription2"};
     int images[] = {R.drawable.avatar, R.drawable.avatar};
+    ListView eventListView;
+    ArrayList<String> eventNames;
+    ArrayAdapter<String> adapter;
+
 
 
     private OnFragmentInteractionListener mListener;
@@ -74,7 +82,20 @@ public class EventBoardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_board, container, false);
+        View v = inflater.inflate(R.layout.fragment_event_board, container, false);
+        eventListView = v.findViewById(R.id.eventListView);
+        eventNames = new ArrayList<String>();
+        adapter = new
+                ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_activated_1, eventNames);
+        for (Event event: DemoServer.allEvents) {
+            adapter.add(event.getTitle());
+        }
+        adapter.add("This is one event title");
+        eventListView.setAdapter(adapter);
+
+
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
