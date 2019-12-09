@@ -7,5 +7,6 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="normal_text">15dp</dimen>
     <dimen name="subtitle_text">17dp</dimen>
+    <dimen name="small_text">13sp</dimen>
     <dimen name="eventTypeSpacing">100sp</dimen>
 </resources>

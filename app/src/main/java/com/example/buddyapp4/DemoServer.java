@@ -24,10 +24,10 @@ public class DemoServer {
 
     /* Events Created*/
     public static Event event1 =
-            user1.createEvent("Title1", "description1", getDateAfterNDays(5), EventType.PARTY);
+            user1.createEvent("Title1", "description1", getDateAfterNDays(5), makeArrayList(EventType.PARTY));
     public static Event event2 =
-            user2.createEvent("Title2", "description2", getDateAfterNDays(3), EventType.DINNER);
-    public static List<Event> allEvents = Arrays.asList(event1, event2);
+            user2.createEvent("Title2", "description2", getDateAfterNDays(3), makeArrayList(EventType.DINNER));
+    public static List<Event> allEvents = new ArrayList<>(Arrays.asList(event1, event2));
 
     public static List<User> allMembers =
             new ArrayList<>(Arrays.asList(user1, user2, user3, user4, buddy1, buddy2, buddy3, buddy4));
@@ -74,5 +74,38 @@ public class DemoServer {
     public static Boolean checkIfCodeCorrect(String userName, String code) {
         if (code.equals("1234")) return true;
         else return false;
+    }
+
+    private static ArrayList<EventType> makeArrayList (EventType typ) {
+        ArrayList<EventType> arr = new ArrayList<EventType> ();
+        arr.add(typ);
+        return arr;
+    }
+
+    public static ArrayList<String> getEventTitles() {
+        ArrayList<String> titles = new ArrayList<String> ();
+        for (Event event: allEvents) {
+            titles.add(event.getTitle());
+        }
+        return titles;
+    }
+
+    public static ArrayList<String> getEventDescriptions() {
+        ArrayList<String> descs = new ArrayList<String> ();
+        for (Event event: allEvents) {
+            descs.add(event.getDescription());
+        }
+        return descs;
+    }
+
+
+    public static ArrayList<String> getEventTypeStrings() {
+        ArrayList<String> result = new ArrayList<String> ();
+        for (Event event: allEvents) {
+            ArrayList<EventType> eventTyps = event.getEventTypes();
+            String typString = eventTyps.isEmpty() ? "None" : eventTyps.get(0).toString();
+            result.add(typString);
+        }
+        return result;
     }
 }

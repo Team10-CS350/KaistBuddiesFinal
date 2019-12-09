@@ -75,4 +75,10 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
     public void toastThis(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
+
+    public void openEventPage(String eventTitle) {
+        Intent intent = new Intent (MainActivity.this, ActivityEvent.class);
+        intent.putExtra("EVENTTITLE", eventTitle);
+        startActivity(intent);
+    }
 }

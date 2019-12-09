@@ -1,5 +1,6 @@
 package com.example.buddyapp4;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,17 +23,17 @@ public class Event {
     // ToDo: private image thumbnail;
     // The event channel is used to know event participants.
     private Channel channel;
-    private EventType type;
+    private ArrayList<EventType> types;
     private EventStatus status;
 
-    public Event(User authr, String ttl, String desc,Date date, EventType typ) {
+    public Event(User authr, String ttl, String desc,Date date, ArrayList<EventType> typs) {
         id = 0; //FixMe
         author = authr;
         title = ttl;
         description = desc;
         eventDate = date;
         channel = new Channel(this);
-        type = typ;
+        types = typs;
         status = EventStatus.ACTIVE;
     }
 
@@ -49,6 +50,7 @@ public class Event {
     public Date getEventDate() {
         return eventDate;
     }
+    public ArrayList<EventType> getEventTypes() { return types; }
 
     /*
     public image getThumbnail() {

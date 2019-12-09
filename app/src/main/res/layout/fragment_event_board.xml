@@ -7,13 +7,6 @@
     android:background="@color/colorBackGround"
     tools:context=".EventBoardFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="The new Fragment to be edited"
-        android:textSize="20sp"/>
-
     <ListView
         android:id="@+id/eventListView"
         android:layout_width="match_parent"

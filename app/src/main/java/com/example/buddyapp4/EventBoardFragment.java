@@ -1,16 +1,26 @@
 package com.example.buddyapp4;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -34,8 +44,9 @@ public class EventBoardFragment extends Fragment {
     private String mParam2;
 
     /* test code */
-    String titles[] = {"sometitle", "sometitle2"};
-    String descriptions[] = {"somedescription1", "somedescription2"};
+    ArrayList<String> titles;
+    ArrayList<String> descriptions;
+    ArrayList<String> eventTypeStrings;
     int images[] = {R.drawable.avatar, R.drawable.avatar};
     ListView eventListView;
     ArrayList<String> eventNames;
@@ -83,15 +94,25 @@ public class EventBoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_event_board, container, false);
+
+        titles = DemoServer.getEventTitles();
+        descriptions = DemoServer.getEventDescriptions();
+        eventTypeStrings = DemoServer.getEventTypeStrings();
+
         eventListView = v.findViewById(R.id.eventListView);
-        eventNames = new ArrayList<String>();
-        adapter = new
-                ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_activated_1, eventNames);
-        for (Event event: DemoServer.allEvents) {
-            adapter.add(event.getTitle());
-        }
-        adapter.add("This is one event title");
+        MyAdapter adapter = new MyAdapter(getActivity(), titles, descriptions, images, eventTypeStrings);
         eventListView.setAdapter(adapter);
+
+        eventListView.setAdapter(adapter);
+        eventListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String eventTitle = titles.get(position);
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.openEventPage(eventTitle);
+
+            }
+        });
 
 
 
@@ -127,7 +148,53 @@ public class EventBoardFragment extends Fragment {
     }
 
 
+    class MyAdapter extends ArrayAdapter<String> {
+        Context context;
+        ArrayList<String> rTitle;
+        ArrayList<String> rDescription;
+        int rImages[];
+        ArrayList<String> rTags;
 
+        MyAdapter(Activity activity, ArrayList<String> titles, ArrayList<String> desc, int images[], ArrayList<String> eventTags) {
+            super(activity.getApplicationContext(), R.layout.event_row, R.id.mainTitle, titles);
+            this.context = context;
+            this.rTitle = titles;
+            this.rDescription = desc;
+            this.rImages = images;
+            this.rTags = eventTags;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = layoutInflater.inflate(R.layout.event_row, parent, false);
+            ImageView image = row.findViewById(R.id.listImage);
+            TextView title = row.findViewById(R.id.mainTitle);
+            TextView description = row.findViewById(R.id.description);
+            TextView tag = row.findViewById(R.id.eventTypeTag);
+
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.avatar);
+            RoundedBitmapDrawable roundedBitmap = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+            roundedBitmap.setCircular(true);
+
+
+//            image.setImageResource(rImages[position]);
+            image.setImageDrawable(roundedBitmap);
+            title.setText(rTitle.get(position));
+            description.setText(rDescription.get(position));
+            tag.setText("[" + rTags.get(position) + "]");
+            tag.setTextColor(getResources().getColor(R.color.colorMellowPrimary));
+            tag.setTextSize(12);
+
+            return row;
+        }
+
+    }
+
+    private String makeTag(String str) {
+        return "[" + str + "]";
+    }
 
 
 }

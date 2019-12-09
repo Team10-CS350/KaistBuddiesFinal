@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.example.buddyapp4">
+    package="com.example.buddyapp4">
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
-        <activity android:name=".ActivityCreateEvent"></activity>
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ActivityEvent"></activity>
+        <activity android:name=".ActivityCreateEvent" />
         <activity android:name=".ActivityAuthenticate" />
         <activity android:name=".ActivityLogIn">
             <intent-filter>
@@ -20,9 +21,9 @@
         </activity>
         <activity android:name=".ActivityRegistration" />
         <activity
-                android:name=".MainActivity"
-                android:label="@string/app_name"
-                android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
