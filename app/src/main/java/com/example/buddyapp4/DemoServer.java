@@ -111,6 +111,7 @@ public class DemoServer {
                 }
             }
             result.add(typString);
+            typString = "";
         }
         return result;
     }

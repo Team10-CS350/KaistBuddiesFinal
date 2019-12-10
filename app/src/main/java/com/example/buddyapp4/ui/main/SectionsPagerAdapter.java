@@ -14,6 +14,7 @@ import com.example.buddyapp4.EventBoardFragment;
 import com.example.buddyapp4.MainActivity;
 import com.example.buddyapp4.ProfileFragment;
 import com.example.buddyapp4.R;
+import com.example.buddyapp4.User;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -25,12 +26,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private static final int[] TAB_TITLES =
             new int[]{R.string.eventBoard, R.string.topTenBoard, R.string.profileBoard};
     private final Context mContext;
-    private final String userEmail;
+    private final User currentUser;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm, String email) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, User user) {
         super(fm);
         mContext = context;
-        userEmail = email;
+        currentUser = user;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = PlaceholderFragment.newInstance(position + 1);
                 break;
             case 2:
-                fragment = ProfileFragment.newInstance(userEmail, "");
+                fragment = ProfileFragment.newInstance(currentUser, "");
                 break;
         }
         return fragment;
