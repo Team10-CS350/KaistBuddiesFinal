@@ -29,8 +29,7 @@ public class ProfileFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private ProfileFragmentListener listener;
 
-    private TextView logout;
-    private TextView profileText;
+    private TextView logout, name, email, userType;
 
 
     public interface ProfileFragmentListener {
@@ -80,12 +79,18 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        logout = v.findViewById(R.id.logoutText);
-        profileText = v.findViewById(R.id.userProfileText);
-        profileText.setTextColor(getResources().getColor(R.color.colorRed));
+        logout = v.findViewById(R.id.logOutButton);
+        name = v.findViewById(R.id.profileUserName);
+        email = v.findViewById(R.id.profileEmail);
+        userType = v.findViewById(R.id.userType);
+
+        name.setText(user.getName());
+        email.setText(user.getEmail());
+
+        String userTypeString = user.isBuddy()? "Buddy": "International";
+        userType.setText(userTypeString);
 
 
-        profileText.setText(user.getEmail());
         logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
