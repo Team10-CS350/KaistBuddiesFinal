@@ -12,6 +12,7 @@
         <activity android:name=".ActivityEvent"></activity>
         <activity android:name=".ActivityCreateEvent" />
         <activity android:name=".ActivityAuthenticate" />
+        <activity android:name=".ActivityChatGroup" />
         <activity android:name=".ActivityLogIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

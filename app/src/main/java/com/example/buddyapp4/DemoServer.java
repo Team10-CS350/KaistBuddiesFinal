@@ -115,4 +115,9 @@ public class DemoServer {
         }
         return result;
     }
+
+    public static ArrayList<String> authors =
+            new ArrayList<>(Arrays.asList("michael", "umid", "sevanna", "javid", "Unhak"));
+    public static ArrayList<String> messages =
+            new ArrayList<>(Arrays.asList("hi there", "hi there", "hi there", "hello", "hoohoho"));
 }

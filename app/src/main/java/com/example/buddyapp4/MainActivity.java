@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.buddyapp4.ui.main.SectionsPagerAdapter;
 
+import java.io.Serializable;
+
 public class MainActivity extends AppCompatActivity implements ProfileFragment.ProfileFragmentListener {
 
     long backPressedTime;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
             public void onClick(View view) {
 
                 Intent creatingEvent = new Intent (MainActivity.this, ActivityCreateEvent.class);
+                creatingEvent.putExtra("CURRENTUSER", (Serializable)currentUser);
                 startActivity(creatingEvent);
 
 //                toastThis("Adding a new event by user " + currentUser.getName());

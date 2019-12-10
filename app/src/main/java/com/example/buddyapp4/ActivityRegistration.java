@@ -47,6 +47,8 @@ public class ActivityRegistration extends AppCompatActivity {
                     DemoServer.sendAuthentication(newUser);
                     DemoServer.addNewUser(newUser);
 
+
+
                     Intent startAuthentication = new Intent (ActivityRegistration.this, ActivityAuthenticate.class);
                     startAuthentication.putExtra("USERMAIL", newUser.getEmail());
                     startActivity(startAuthentication);

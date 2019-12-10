@@ -114,8 +114,6 @@ public class EventBoardFragment extends Fragment {
             }
         });
 
-
-
         return v;
     }
 
@@ -190,10 +188,6 @@ public class EventBoardFragment extends Fragment {
             return row;
         }
 
-    }
-
-    private String makeTag(String str) {
-        return "[" + str + "]";
     }
 
 
