@@ -99,11 +99,17 @@ public class DemoServer {
     }
 
 
-    public static ArrayList<String> getEventTypeStrings() {
+    public static ArrayList<String> getEventTypeStringTags() {
+        String typString = "";
         ArrayList<String> result = new ArrayList<String> ();
         for (Event event: allEvents) {
             ArrayList<EventType> eventTyps = event.getEventTypes();
-            String typString = eventTyps.isEmpty() ? "None" : eventTyps.get(0).toString();
+            if (eventTyps.isEmpty()) typString = "[None]";
+            else {
+                for (EventType typ: eventTyps) {
+                    typString += "[" + typ.toString() + "]";
+                }
+            }
             result.add(typString);
         }
         return result;

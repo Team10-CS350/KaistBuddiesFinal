@@ -1,6 +1,7 @@
 package com.example.buddyapp4.ui.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.EventLog;
 
 import androidx.annotation.Nullable;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.buddyapp4.EventBoardFragment;
+import com.example.buddyapp4.MainActivity;
 import com.example.buddyapp4.ProfileFragment;
 import com.example.buddyapp4.R;
 
@@ -23,10 +25,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private static final int[] TAB_TITLES =
             new int[]{R.string.eventBoard, R.string.topTenBoard, R.string.profileBoard};
     private final Context mContext;
+    private final String userEmail;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, String email) {
         super(fm);
         mContext = context;
+        userEmail = email;
     }
 
     @Override
@@ -42,7 +46,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = PlaceholderFragment.newInstance(position + 1);
                 break;
             case 2:
-                fragment = ProfileFragment.newInstance("", "");
+                fragment = ProfileFragment.newInstance(userEmail, "");
                 break;
         }
         return fragment;

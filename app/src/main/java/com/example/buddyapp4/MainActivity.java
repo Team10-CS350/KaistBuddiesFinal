@@ -21,7 +21,7 @@ import com.example.buddyapp4.ui.main.SectionsPagerAdapter;
 public class MainActivity extends AppCompatActivity implements ProfileFragment.ProfileFragmentListener {
 
     long backPressedTime;
-
+    String userEmail;
 
     @Override
     public void onBackPressed() {
@@ -40,8 +40,11 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        userEmail = intent.getStringExtra("USEREMAIL");
+
         setContentView(R.layout.activity_main);
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), userEmail);
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);

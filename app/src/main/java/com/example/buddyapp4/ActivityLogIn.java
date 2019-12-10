@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
+
 public class ActivityLogIn extends AppCompatActivity {
     private TextView registerLink;
     private Button logInButton;
@@ -55,6 +57,7 @@ public class ActivityLogIn extends AppCompatActivity {
                         editor.apply();
 
                         Intent i = new Intent(ActivityLogIn.this, MainActivity.class);
+                        i.putExtra("CURRENTUSER", (Serializable) currentUser);
                         startActivity(i);
                     } else toastThis ("password does not match");
                 } else toastThis ("user is not registered");

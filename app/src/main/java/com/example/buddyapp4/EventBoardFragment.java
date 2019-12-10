@@ -97,7 +97,7 @@ public class EventBoardFragment extends Fragment {
 
         titles = DemoServer.getEventTitles();
         descriptions = DemoServer.getEventDescriptions();
-        eventTypeStrings = DemoServer.getEventTypeStrings();
+        eventTypeStrings = DemoServer.getEventTypeStringTags();
 
         eventListView = v.findViewById(R.id.eventListView);
         MyAdapter adapter = new MyAdapter(getActivity(), titles, descriptions, images, eventTypeStrings);
@@ -183,7 +183,7 @@ public class EventBoardFragment extends Fragment {
             image.setImageDrawable(roundedBitmap);
             title.setText(rTitle.get(position));
             description.setText(rDescription.get(position));
-            tag.setText("[" + rTags.get(position) + "]");
+            tag.setText(rTags.get(position));
             tag.setTextColor(getResources().getColor(R.color.colorMellowPrimary));
             tag.setTextSize(12);
 

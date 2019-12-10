@@ -67,7 +67,7 @@ public class ActivityCreateEvent extends AppCompatActivity {
                 title = titleText.getText().toString();
                 description = descriptionText.getText().toString();
                 date = new Date();
-                DemoServer.allEvents.add(authr.createEvent(title,description,date,typs));
+                DemoServer.allEvents.add(0,authr.createEvent(title,description,date,typs));
 
                 Intent intent = new Intent (ActivityCreateEvent.this, MainActivity.class);
                 startActivity(intent);
