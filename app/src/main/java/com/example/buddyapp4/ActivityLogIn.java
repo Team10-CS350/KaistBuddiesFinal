@@ -24,8 +24,8 @@ public class ActivityLogIn extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        Intent intent = new Intent (ActivityLogIn.this, ActivityChatGroup.class);
-        startActivity(intent);
+//        Intent intent = new Intent (ActivityLogIn.this, ActivityChatGroup.class);
+//        startActivity(intent);
 
         registerLink = (TextView) findViewById(R.id.textRegister);
         logInButton = (Button) findViewById(R.id.button);

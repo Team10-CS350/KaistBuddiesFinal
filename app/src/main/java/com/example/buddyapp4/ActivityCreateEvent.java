@@ -23,7 +23,7 @@ public class ActivityCreateEvent extends AppCompatActivity {
 
 
     User authr;
-    String title, description;
+    String title, description, dateAndTime;
     Date date;
     ArrayList<EventType> typs;
 
@@ -31,6 +31,9 @@ public class ActivityCreateEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
+
+        Intent intent = getIntent();
+        authr = (User) intent.getSerializableExtra("CURRENTUSER");
 
         typs = new ArrayList<EventType> ();
 
@@ -63,11 +66,11 @@ public class ActivityCreateEvent extends AppCompatActivity {
                 if (hangOutCheck.isChecked()) typs.add(EventType.HANGOUT);
                 if (meetingCheck.isChecked()) typs.add(EventType.MEETING);
 
-                authr = DemoServer.user1;
+                dateAndTime = eventDate.getText().toString() + " " + eventTime.getText().toString();
                 title = titleText.getText().toString();
                 description = descriptionText.getText().toString();
                 date = new Date();
-                DemoServer.allEvents.add(0,authr.createEvent(title,description,date,typs));
+                DemoServer.allEvents.add(0,authr.createEvent(title,description,date,typs, dateAndTime));
 
                 Intent intent = new Intent (ActivityCreateEvent.this, MainActivity.class);
                 startActivity(intent);

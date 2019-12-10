@@ -24,9 +24,9 @@ public class DemoServer {
 
     /* Events Created*/
     public static Event event1 =
-            user1.createEvent("Title1", "description1", getDateAfterNDays(5), makeArrayList(EventType.PARTY));
+            user1.createEvent("Title1", "description1", getDateAfterNDays(5), makeArrayList(EventType.PARTY), " 2019/12/19");
     public static Event event2 =
-            user2.createEvent("Title2", "description2", getDateAfterNDays(3), makeArrayList(EventType.DINNER));
+            user2.createEvent("Title2", "description2", getDateAfterNDays(3), makeArrayList(EventType.DINNER), "2019/12/16");
     public static List<Event> allEvents = new ArrayList<>(Arrays.asList(event1, event2));
 
     public static List<User> allMembers =

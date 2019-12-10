@@ -29,19 +29,94 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Event title"
+        android:gravity="center"
         android:textSize="50sp"
         android:textColor="@color/colorPrimaryDark"/>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Created by: "
+                android:gravity="left"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimaryDark"/>
+        <TextView
+                android:id="@+id/eventCreatorName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Some User Name here"
+                android:gravity="left"
+                android:textSize="20sp"
+                android:textColor="@color/colorMellowPrimary"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="On:"
+                android:layout_margin="10dp"
+                android:textColor="@color/colorPrimaryDark"/>
+        <TextView
+                android:id="@+id/eventDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="event date here"
+                android:layout_margin="10dp"
+                android:textStyle="italic"
+                android:textColor="@color/colorMellowPrimary"/>
+
+
+    </LinearLayout>
     <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Description:"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/eventDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="70sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
         android:text="The Event's information will be stored here"/>
 
-    <Button
-        android:id="@+id/attendEventButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="  I WILL ATTEND  "/>
+        android:gravity="center"
+        android:orientation="horizontal">
 
+        <Button
+                android:id="@+id/attendEventButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="  I WILL ATTEND  "/>
+
+        <Button
+                android:id="@+id/openChatGroupButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="  Open Chat  "/>
+
+
+    </LinearLayout>
 </LinearLayout>

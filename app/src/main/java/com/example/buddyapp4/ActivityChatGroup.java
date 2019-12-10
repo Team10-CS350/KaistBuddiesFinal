@@ -32,6 +32,12 @@ import java.util.Arrays;
 
 public class ActivityChatGroup extends AppCompatActivity {
 
+    Event event;
+    User currentUser;
+
+    ArrayList<String> authors;
+    ArrayList<String> messages;
+
     ListView messageBoard;
     EditText enteredMessage;
 
@@ -41,8 +47,15 @@ public class ActivityChatGroup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_group);
 
+        Intent intent = getIntent();
+        event = (Event) intent.getSerializableExtra("EVENT");
+        currentUser = (User) intent.getSerializableExtra("CURRENTUSER");
+
+        authors = event.getChannel().getAuthorNames();
+        messages = event.getChannel().getMessageStrings();
+
         messageBoard = findViewById(R.id.messagesBoard);
-        MessageAdapter adapter = new MessageAdapter(ActivityChatGroup.this, DemoServer.authors, DemoServer.messages);
+        MessageAdapter adapter = new MessageAdapter(ActivityChatGroup.this, authors, messages);
         if (adapter == null || messageBoard == null) toastThis ("adapter is null");
         else messageBoard.setAdapter(adapter);
 
@@ -54,11 +67,14 @@ public class ActivityChatGroup extends AppCompatActivity {
 
         MessageAdapter adapter = (MessageAdapter) messageBoard.getAdapter();
         String messageText = enteredMessage.getText().toString();
-        String senderName = "Michael";
-        DemoServer.messages.add(messageText);
-        DemoServer.authors.add(senderName);
-        enteredMessage.getText().clear();
-        adapter.notifyDataSetChanged();
+        if (messageText.length() > 0) {
+            Message message = new Message (currentUser, messageText);
+            event.getChannel().appendMessage(message);
+            authors.add(message.getAuthor().getName());
+            messages.add(message.getContent());
+            enteredMessage.getText().clear();
+            adapter.notifyDataSetChanged();
+        }
 
     }
 

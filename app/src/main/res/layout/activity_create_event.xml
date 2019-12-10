@@ -4,7 +4,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
         android:background="@color/colorBackGround"
         tools:context=".ActivityCreateEvent">
@@ -38,7 +37,7 @@
             android:id="@+id/eventTitleEntered"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
-            android:layout_height="50sp"/>
+            android:layout_height="wrap_content"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +51,8 @@
             android:id="@+id/eventDescEntered"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
-            android:layout_height="50sp"/>
+            android:hint= " "
+            android:layout_height="wrap_content"/>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -209,10 +209,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="HH:MM"
-            android:inputType="date" />
-
+            android:inputType="time" />
     </LinearLayout>
-
 
 
 
@@ -220,7 +218,7 @@
             android:id="@+id/postEventButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:text="Post Event"/>
 
 

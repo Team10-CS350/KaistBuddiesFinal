@@ -107,9 +107,9 @@ public class EventBoardFragment extends Fragment {
         eventListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String eventTitle = titles.get(position);
+                Event clickedEvent = DemoServer.allEvents.get(position);
                 MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.openEventPage(eventTitle);
+                mainActivity.openEventPage(clickedEvent);
 
             }
         });

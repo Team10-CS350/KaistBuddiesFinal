@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,9 +83,10 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    public void openEventPage(String eventTitle) {
+    public void openEventPage(Event event) {
         Intent intent = new Intent (MainActivity.this, ActivityEvent.class);
-        intent.putExtra("EVENTTITLE", eventTitle);
+        intent.putExtra("EVENT", (Serializable) event);
+        intent.putExtra("CURRENTUSER", (Serializable)currentUser);
         startActivity(intent);
     }
 }

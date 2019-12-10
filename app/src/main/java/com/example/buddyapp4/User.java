@@ -52,8 +52,8 @@ public class User implements Serializable {
         Message message = new Message(this, messageString);
         event.getChannel().appendMessage(message);
     }
-    public Event createEvent (String ttl, String desc,Date date, ArrayList<EventType> typs) {
-        return new Event(this, ttl, desc, date, typs);
+    public Event createEvent (String ttl, String desc,Date date, ArrayList<EventType> typs, String dateAndTime) {
+        return new Event(this, ttl, desc, date, typs, dateAndTime );
     }
 
     public void deleteMessage(Event event, Message message) {
