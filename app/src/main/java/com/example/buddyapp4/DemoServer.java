@@ -24,9 +24,11 @@ public class DemoServer {
 
     /* Events Created*/
     public static Event event1 =
-            user1.createEvent("Title1", "description1", getDateAfterNDays(5), makeArrayList(EventType.PARTY), " 2019/12/19");
+            user1.createEvent("Let's party", "Dinner first and then some fun",
+                    getDateAfterNDays(5), makeArrayList(EventType.PARTY), " 2019/12/19");
     public static Event event2 =
-            user2.createEvent("Title2", "description2", getDateAfterNDays(3), makeArrayList(EventType.DINNER), "2019/12/16");
+            user2.createEvent("Need help before finals", "I want some one to help me prepare for Calculus 1",
+                    getDateAfterNDays(3), makeArrayList(EventType.STUDY), "2019/12/16");
     public static List<Event> allEvents = new ArrayList<>(Arrays.asList(event1, event2));
 
     public static List<User> allMembers =
@@ -115,9 +117,5 @@ public class DemoServer {
         }
         return result;
     }
-
-    public static ArrayList<String> authors =
-            new ArrayList<>(Arrays.asList("michael", "umid", "sevanna", "javid", "Unhak"));
-    public static ArrayList<String> messages =
-            new ArrayList<>(Arrays.asList("hi there", "hi there", "hi there", "hello", "hoohoho"));
+    
 }
