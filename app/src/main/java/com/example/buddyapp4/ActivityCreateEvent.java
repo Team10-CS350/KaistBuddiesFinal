@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,7 +22,7 @@ public class ActivityCreateEvent extends AppCompatActivity {
     CheckBox hangOutCheck, meetingCheck;
     Button postEventButton;
 
-
+    int userIndex;
     User authr;
     String title, description, dateAndTime;
     Date date;
@@ -33,7 +34,11 @@ public class ActivityCreateEvent extends AppCompatActivity {
         setContentView(R.layout.activity_create_event);
 
         Intent intent = getIntent();
-        authr = (User) intent.getSerializableExtra("CURRENTUSER");
+        userIndex = intent.getIntExtra("USERINDEX", 0);
+        authr = DemoServer.allMembers.get(userIndex);
+
+
+        toastThis("creating event as " + authr.getName());
 
         typs = new ArrayList<EventType> ();
 
@@ -73,6 +78,7 @@ public class ActivityCreateEvent extends AppCompatActivity {
                 DemoServer.allEvents.add(0,authr.createEvent(title,description,date,typs, dateAndTime));
 
                 Intent intent = new Intent (ActivityCreateEvent.this, MainActivity.class);
+                intent.putExtra("USERINDEX", userIndex);
                 startActivity(intent);
 
 

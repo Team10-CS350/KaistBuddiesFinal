@@ -32,11 +32,9 @@ import java.util.Arrays;
 
 public class ActivityChatGroup extends AppCompatActivity {
 
+    int eventIndex, userIndex;
     Event event;
     User currentUser;
-
-    ArrayList<String> authors;
-    ArrayList<String> messages;
 
     ListView messageBoard;
     EditText enteredMessage;
@@ -48,14 +46,13 @@ public class ActivityChatGroup extends AppCompatActivity {
         setContentView(R.layout.activity_chat_group);
 
         Intent intent = getIntent();
-        event = (Event) intent.getSerializableExtra("EVENT");
-        currentUser = (User) intent.getSerializableExtra("CURRENTUSER");
-
-        authors = event.getChannel().getAuthorNames();
-        messages = event.getChannel().getMessageStrings();
+        eventIndex = intent.getIntExtra("EVENTINDEX", 0);
+        userIndex = intent.getIntExtra("USERINDEX", 0);
+        event = DemoServer.allEvents.get(eventIndex);
+        currentUser = DemoServer.allMembers.get(userIndex);
 
         messageBoard = findViewById(R.id.messagesBoard);
-        MessageAdapter adapter = new MessageAdapter(ActivityChatGroup.this, authors, messages);
+        MessageAdapter adapter = new MessageAdapter(ActivityChatGroup.this, event.getChannel());
         if (adapter == null || messageBoard == null) toastThis ("adapter is null");
         else messageBoard.setAdapter(adapter);
 
@@ -70,24 +67,21 @@ public class ActivityChatGroup extends AppCompatActivity {
         if (messageText.length() > 0) {
             Message message = new Message (currentUser, messageText);
             event.getChannel().appendMessage(message);
-            authors.add(message.getAuthor().getName());
-            messages.add(message.getContent());
             enteredMessage.getText().clear();
             adapter.notifyDataSetChanged();
+            adapter.add("new message added");
+
         }
 
     }
 
     class MessageAdapter extends ArrayAdapter<String> {
         Context context;
-        ArrayList<String> authors;
-        ArrayList<String> messages;
-
-        MessageAdapter(Activity activity, ArrayList<String> authors, ArrayList<String> messages) {
-            super(activity.getApplicationContext(), R.layout.their_message, R.id.mainTitle,authors);
+        Channel channel;
+        MessageAdapter(Activity activity, Channel eventChannel) {
+            super(activity.getApplicationContext(), R.layout.their_message, R.id.mainTitle,eventChannel.getAuthorNames());
             this.context = context;
-            this.authors = authors;
-            this.messages = messages;
+            this.channel = event.getChannel();
         }
 
         @NonNull
@@ -99,8 +93,8 @@ public class ActivityChatGroup extends AppCompatActivity {
             TextView messageField = messageBlock.findViewById(R.id.message_body);
 
 //            image.setImageResource(rImages[position]);
-            sendersNameField.setText(authors.get(position));
-            messageField.setText(messages.get(position));
+            sendersNameField.setText(event.getChannel().getAuthorNames().get(position));
+            messageField.setText(event.getChannel().getMessageStrings().get(position));
 
             return messageBlock;
         }

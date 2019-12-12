@@ -24,6 +24,7 @@ import java.io.Serializable;
 public class MainActivity extends AppCompatActivity implements ProfileFragment.ProfileFragmentListener {
 
     long backPressedTime;
+    int userIndex;
     User currentUser;
 
     @Override
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        currentUser = (User) intent.getSerializableExtra("CURRENTUSER");
+        userIndex = intent.getIntExtra("USERINDEX", 0);
+        currentUser = DemoServer.allMembers.get(userIndex);
 
         setContentView(R.layout.activity_main);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(), currentUser);
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
             public void onClick(View view) {
 
                 Intent creatingEvent = new Intent (MainActivity.this, ActivityCreateEvent.class);
-                creatingEvent.putExtra("CURRENTUSER", (Serializable)currentUser);
+                creatingEvent.putExtra("USERINDEX", userIndex);
                 startActivity(creatingEvent);
 
 //                toastThis("Adding a new event by user " + currentUser.getName());
@@ -83,10 +85,10 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    public void openEventPage(Event event) {
+    public void openEventPage(int eventIndex) {
         Intent intent = new Intent (MainActivity.this, ActivityEvent.class);
-        intent.putExtra("EVENT", (Serializable) event);
-        intent.putExtra("CURRENTUSER", (Serializable)currentUser);
+        intent.putExtra("EVENTINDEX", eventIndex);
+        intent.putExtra("USERINDEX", userIndex);
         startActivity(intent);
     }
 }

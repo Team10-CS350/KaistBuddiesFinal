@@ -41,7 +41,7 @@
                             android:layout_gravity="center_vertical"
                             android:text="Name: "
                             android:textStyle="bold"
-                            android:textSize="25dp"
+                            android:textSize="@dimen/normal_text"
                             />
                 <TextView
                         android:id="@+id/profileUserName"
@@ -51,7 +51,7 @@
                         android:text="UserName"
                         android:textStyle="bold"
                         android:textColor="@color/colorMellowPrimary"
-                        android:textSize="25dp"
+                        android:textSize="@dimen/subtitle_text"
                         />
 
 
@@ -66,7 +66,7 @@
                         android:layout_gravity="center_vertical"
                         android:text="Email: "
                         android:textStyle="bold"
-                        android:textSize="25dp"
+                        android:textSize="@dimen/normal_text"
                         />
                 <TextView
                         android:id="@+id/profileEmail"
@@ -76,20 +76,20 @@
                         android:text="UserName"
                         android:textStyle="bold"
                         android:textColor="@color/colorMellowPrimary"
-                        android:textSize="25dp"
+                        android:textSize="@dimen/subtitle_text"
                         />
 
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/logOutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log Out"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/subtitle_text">
         </LinearLayout>
-    <TextView
-            android:id="@+id/logOutButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:textColor="@color/colorRed"
-            android:textSize="20dp"
-            android:paddingLeft="5dp"/>
     </LinearLayout>
 
 
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="User Type:"
-                android:textSize="30dp"/>
+                android:textSize="@dimen/subtitle_text"/>
 
         <TextView
                 android:id="@+id/userType"
@@ -115,7 +115,7 @@
                 android:layout_gravity="center_vertical"
                 android:text="  Buddy / International "
                 android:textColor="@color/colorMellowPrimary"
-                android:textSize="25dp"/>
+                android:textSize="@dimen/subtitle_text"/>
 
     </LinearLayout>
 
@@ -146,7 +146,7 @@
                 android:textStyle="bold"
                 android:text="BIO:"
                 android:layout_marginLeft="10dp"
-                android:textSize="30dp"/>
+                android:textSize="@dimen/subtitle_text"/>
         <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
                 android:textStyle="italic"
                 android:text="available"
                 android:layout_marginLeft="10dp"
-                android:textSize="30dp"/>
+                android:textSize="@dimen/subtitle_text"/>
     </LinearLayout>
     <LinearLayout
             android:id="@+id/commentsPart"
@@ -165,24 +165,25 @@
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp">
+
         <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textStyle="bold"
-                android:text="Comment"
-                android:layout_marginLeft="10dp"
-                android:textSize="30dp"
-                />
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="Comments:"
+            android:textSize="@dimen/subtitle_text"
+            android:textStyle="bold" />
+
         <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="write comment"
+                android:text="written comments"
                 android:layout_marginLeft="10dp"
-                android:textSize="25dp"
+                android:textSize="@dimen/normal_text"
                 />
     </LinearLayout>
     <LinearLayout
@@ -193,10 +194,10 @@
             android:gravity="bottom">
         <EditText
                 android:id="@+id/editTextSimple"
-                android:layout_width="wrap_content"
+                android:layout_width="200sp"
                 android:layout_height="wrap_content"
                 android:hint="write something"
-                android:textSize="30dp">
+                android:textSize="@dimen/small_text">
 
         </EditText>
         <Button
@@ -204,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:text="comment"
-                android:textSize="18dp"
+                android:textSize="@dimen/normal_text"
                 >
 
         </Button>
