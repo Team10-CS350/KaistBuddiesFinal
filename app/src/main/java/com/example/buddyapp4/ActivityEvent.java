@@ -30,8 +30,10 @@ public class ActivityEvent extends AppCompatActivity {
         Intent intent  = getIntent();
         eventIndex = intent.getIntExtra("EVENTINDEX", 0);
         userIndex = intent.getIntExtra("USERINDEX", 0);
+
         event = DemoServer.allEvents.get(eventIndex);
         currentUser = DemoServer.allMembers.get(userIndex);
+
 
         titleView = findViewById(R.id.eventPageTitle);
         descriptionView = findViewById(R.id.eventDescription);
@@ -49,25 +51,20 @@ public class ActivityEvent extends AppCompatActivity {
         descriptionView.setText(event.getDescription());
         creatorView.setText(event.getAuthor().getName());
         eventDateView.setText(event.getEventDate());
-        toastThis("opening event as " + currentUser.getName());
         attendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (event.getChannel().getUsers().contains(currentUser) ) {
-                    if (DemoServer.allEvents.contains(event) && DemoServer.allMembers.contains(currentUser) ) {
-                        toastThis("correct");
-                    }
-                    //toastThis("You have already chosen to Attend");
+                    toastThis("You have already chosen to Attend");
                 }
                 else {
                     if (DemoServer.allEvents.contains(event) && DemoServer.allMembers.contains(currentUser)) {
                         toastThis("correct");
                     }
-                    else toastThis("event is not in all events list");
                     event.getChannel().getUsers().add(currentUser);
                     attendButton.setText("ATTENDING");
                     attendButton.setTextColor(getResources().getColor(R.color.colorRed));
-//                    toastThis("You have been subscribed to the event!");
+                    toastThis("You have been subscribed to the event!");
                 }
             }
         });

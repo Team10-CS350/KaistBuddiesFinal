@@ -30,14 +30,6 @@ public class ActivityLogIn extends AppCompatActivity {
         registerLink = (TextView) findViewById(R.id.textRegister);
         logInButton = (Button) findViewById(R.id.button);
 
-//        SharedPreferences preferences = getSharedPreferences("status", MODE_PRIVATE);
-//        String currentStatus = preferences.getString("userStatus", "");
-//        if (currentStatus.equals("loggedIn")) {
-//            Intent i = new Intent(ActivityLogIn.this, MainActivity.class);
-//            String userEmail = preferences.getString("loggedInUserEMail", "");
-//            i.putExtra("CURRENTUSER", (Serializable) DemoServer.getUserFromEmail(userEmail));
-//            startActivity(i);
-//        }
 
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override

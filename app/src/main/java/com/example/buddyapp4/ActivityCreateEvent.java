@@ -75,7 +75,9 @@ public class ActivityCreateEvent extends AppCompatActivity {
                 title = titleText.getText().toString();
                 description = descriptionText.getText().toString();
                 date = new Date();
-                DemoServer.allEvents.add(0,authr.createEvent(title,description,date,typs, dateAndTime));
+                Event newEvent = authr.createEvent(title,description,date,typs, dateAndTime);
+                newEvent.getChannel().getUsers().add(authr);
+                DemoServer.allEvents.add(0, newEvent);
 
                 Intent intent = new Intent (ActivityCreateEvent.this, MainActivity.class);
                 intent.putExtra("USERINDEX", userIndex);

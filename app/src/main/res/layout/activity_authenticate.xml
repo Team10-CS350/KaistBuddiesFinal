@@ -23,9 +23,18 @@
         android:layout_height="wrap_content"
         android:text="Please fill in the code sent to you via email"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="15dp"
+
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(if using local server, try 1234)"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/colorMellowPrimary"
+        android:textSize="@dimen/small_text" />
 
 
     <LinearLayout

@@ -40,18 +40,22 @@ public class ActivityRegistration extends AppCompatActivity {
                     toastThis ("please fill every field");
                 }
                 else if (password1.equals(password2)) {
-                    toastThis("the passwords are equal");
-                    User newUser = new User(name.getText().toString(), email.getText().toString(),
-                            password1, buddyCheckBox.isChecked());
+                    if (email1.length() <= 12 || !email1.endsWith("@kaist.ac.kr") ) {
+                        toastThis ("Only Kaist email permitted");
+                    } else if (DemoServer.checkIfEmailExists(email1)) {
+                        toastThis ("email already exists");
+                    } else {
+                        User newUser = new User(name.getText().toString(), email.getText().toString(),
+                                password1, buddyCheckBox.isChecked());
 
-                    DemoServer.sendAuthentication(newUser);
-                    DemoServer.addNewUser(newUser);
+                        DemoServer.sendAuthentication(newUser);
+                        DemoServer.addNewUser(newUser);
 
 
-
-                    Intent startAuthentication = new Intent (ActivityRegistration.this, ActivityAuthenticate.class);
-                    startAuthentication.putExtra("USERMAIL", newUser.getEmail());
-                    startActivity(startAuthentication);
+                        Intent startAuthentication = new Intent(ActivityRegistration.this, ActivityAuthenticate.class);
+                        startAuthentication.putExtra("USERMAIL", newUser.getEmail());
+                        startActivity(startAuthentication);
+                    }
 
                 } else toastThis("your passwords don't match");
             }

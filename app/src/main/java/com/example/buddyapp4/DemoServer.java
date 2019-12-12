@@ -100,6 +100,13 @@ public class DemoServer {
         return descs;
     }
 
+    public boolean isEmailAlreadyRegistered(String email) {
+        for (User user: allMembers) {
+            if (user.getEmail().equals(email)) return true;
+        }
+        return false;
+    }
+
 
     public static ArrayList<String> getEventTypeStringTags() {
         String typString = "";
@@ -117,5 +124,5 @@ public class DemoServer {
         }
         return result;
     }
-    
+
 }

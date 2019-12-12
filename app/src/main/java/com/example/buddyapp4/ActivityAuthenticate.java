@@ -42,7 +42,7 @@ public class ActivityAuthenticate extends AppCompatActivity {
                 if (DemoServer.checkIfCodeCorrect(userEmail, code)) {
 
 
-                    toastThis ("you have been regisered");
+                    toastThis ("you have been registered");
 
                     SharedPreferences preferences = getSharedPreferences("status", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
