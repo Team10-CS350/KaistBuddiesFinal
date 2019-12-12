@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:text="Log Out"
                 android:textColor="@color/colorRed"
-                android:textSize="@dimen/subtitle_text">
+                android:textSize="@dimen/subtitle_text"/>
         </LinearLayout>
     </LinearLayout>
 
